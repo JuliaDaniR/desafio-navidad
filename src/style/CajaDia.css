@@ -70,3 +70,38 @@ color: darkgreen;
     width: 250px;
   }
  }
+
+ .cartel-no-abierto {
+  position: fixed;
+  top: 200px;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translateX(-50%);
+  background-image: url("/public/assets/papa-noel.png");
+  background-position: center;
+  background-size: cover;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  color: #120303;
+  font-weight: bold;
+  font-family: "Mountains of Christmas", serif;
+  z-index: 1000;
+  animation: mostrarCartel 6s ease-out-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;      
+  text-align: center;
+}
+
+@keyframes mostrarCartel {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

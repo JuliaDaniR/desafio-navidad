@@ -8,9 +8,9 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
   const [abierta, setAbierta] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [mostrandoAnimacion, setMostrandoAnimacion] = useState(false);
+  const [mostrarCartel, setMostrarCartel] = useState(false); 
   const hoy = moment().date();
 
-  // Referencia para el sonido
   const sonidoAnimacionRef = useRef(new Audio('/assets/abrir-caja.wav')); 
 
   const manejarClick = () => {
@@ -29,7 +29,9 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
         setMostrarModal(true);
       }, 7000); 
     } else {
-      alert('¡Todavía no puedes abrir esta caja!');
+      
+      setMostrarCartel(true);
+      setTimeout(() => setMostrarCartel(false), 6000); 
     }
   };
 
@@ -80,6 +82,12 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
             )}
           </div>
         </CardSorpresa>
+      )}
+
+      {mostrarCartel && (
+        <div className="cartel-no-abierto">
+          <p>¡Todavía no puedes abrir esta caja!</p>
+        </div>
       )}
     </>
   );
