@@ -31,7 +31,7 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
     } else {
       
       setMostrarCartel(true);
-      setTimeout(() => setMostrarCartel(false), 6000); 
+      setTimeout(() => setMostrarCartel(false), 4000); 
     }
   };
 

@@ -16,10 +16,10 @@
   animation: spinOut 4s ease-in-out 4s forwards;
 }
 
-.numero{
-font-size: 2rem;
-font-weight: bold;
-color: darkgreen;
+.numero {
+  font-size: 2rem;
+  font-weight: bold;
+  color: darkgreen;
 }
 
 @keyframes spinOut {
@@ -32,26 +32,29 @@ color: darkgreen;
     opacity: 0;
   }
 }
-.card-sorpresa-h2, .card-sorpresa-p, .contenido-regalo-p, .numero{
+.card-sorpresa-h2,
+.card-sorpresa-p,
+.contenido-regalo-p,
+.numero {
   font-family: "Mountains of Christmas", serif;
   font-weight: 700;
 }
-.card-sorpresa-h2{
+.card-sorpresa-h2 {
   font-size: 2rem;
   color: darkgoldenrod;
- }
+}
 
- .card-sorpresa-p{
+.card-sorpresa-p {
   font-size: 1.3rem;
   color: darkred;
- }
+}
 
- .contenido-regalo-p{
+.contenido-regalo-p {
   font-size: 1.8rem;
   color: darkgoldenrod;
- }
+}
 
- @media (max-width: 900px) {
+@media (max-width: 900px) {
   .animacion-caja {
     position: fixed;
     top: 30%;
@@ -59,19 +62,19 @@ color: darkgreen;
   }
 }
 
- @media (max-width: 480px) {
+@media (max-width: 480px) {
   .animacion-caja {
     position: fixed;
     top: 30%;
     left: 15%;
   }
-  
+
   .imagen-caja {
     width: 250px;
   }
- }
+}
 
- .cartel-no-abierto {
+.cartel-no-abierto {
   position: fixed;
   top: 200px;
   left: 50%;
@@ -88,10 +91,10 @@ color: darkgreen;
   font-weight: bold;
   font-family: "Mountains of Christmas", serif;
   z-index: 1000;
-  animation: mostrarCartel 6s ease-out-in;
+  animation: mostrarCartel 4s ease-out-in;
   display: flex;
   justify-content: center;
-  align-items: center;      
+  align-items: center;
   text-align: center;
 }
 
