@@ -8,11 +8,13 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
   const [abierta, setAbierta] = useState(false);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [mostrandoAnimacion, setMostrandoAnimacion] = useState(false);
-  const [mostrarCartel, setMostrarCartel] = useState(false); 
+  const [mostrarCartel, setMostrarCartel] = useState(false);
   const hoy = moment().date();
 
-  const sonidoAnimacionRef = useRef(new Audio('/assets/abrir-caja.wav')); 
+  // Referencia para el sonido
+  const sonidoAnimacionRef = useRef(new Audio("/assets/abrir-caja.wav"));
 
+  // Maneja el clic en la caja
   const manejarClick = () => {
     if (dia <= hoy) {
       setAbierta(true);
@@ -27,25 +29,24 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
       setTimeout(() => {
         setMostrandoAnimacion(false);
         setMostrarModal(true);
-      }, 7000); 
+      }, 7000);
     } else {
-      
       setMostrarCartel(true);
-      setTimeout(() => setMostrarCartel(false), 4000); 
+      setTimeout(() => setMostrarCartel(false), 4000);
     }
   };
 
+  // Cierra el modal y reanuda el sonido de Papá Noel
   const cerrarModal = () => {
     setMostrarModal(false);
-
-    // Reanudar el sonido de Papá Noel
     reanudarPapaNoel();
   };
 
   return (
     <>
+      {/* Caja interactiva */}
       <motion.div
-        className={`caja-dia ${abierta ? 'abierta' : ''}`}
+        className={`caja-dia ${abierta ? "abierta" : ""}`}
         onClick={manejarClick}
         whileHover={{ scale: 1.1 }}
       >
@@ -56,6 +57,7 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
         )}
       </motion.div>
 
+      {/* Animación al abrir la caja */}
       {mostrandoAnimacion && (
         <motion.div
           className="animacion-caja"
@@ -71,6 +73,7 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
         </motion.div>
       )}
 
+      {/* Modal con el regalo */}
       {mostrarModal && (
         <CardSorpresa onClose={cerrarModal}>
           <h2 className="card-sorpresa-h2">🎁 Regalo del Día {dia}</h2>
@@ -84,6 +87,7 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
         </CardSorpresa>
       )}
 
+      {/* Cartel de caja no disponible */}
       {mostrarCartel && (
         <div className="cartel-no-abierto">
           <p>¡Todavía no puedes abrir esta caja!</p>

@@ -11,7 +11,7 @@ body {
 
 .app {
   text-align: center;
-  padding: 20px;
+  margin: 1rem;
   height: 90%;
 }
 
@@ -19,7 +19,6 @@ body {
   background: linear-gradient(to bottom, #011d3b, #072d64, #100328);
   color: #fff;
   border-radius: 10px;
-  padding: 10px;
   position: relative;
   overflow: hidden;
   font-family: "Mountains of Christmas", serif;
@@ -31,7 +30,6 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px; 
 }
 
 .texto-arcoiris {
@@ -93,7 +91,6 @@ h1 {
   border: 10px solid transparent;
   border-image: url("/public/assets/fondo-dias.jpg") 30 stretch;
   border-radius: 8px;
-  padding: 10px;
   cursor: pointer;
   text-align: center;
   font-family: "Mountains of Christmas", serif;
@@ -153,3 +150,23 @@ h1 {
     overflow: initial;
   }
 }
+
+.footer {
+  background-color: #011d3b;
+  color: #ffffff; 
+  text-align: center; 
+  padding: 1rem 0;
+  font-size: 1.2rem; 
+  position: fixed; 
+  bottom: 0; 
+  left: 0;
+  width: 100%; 
+  font-family: "Mountains of Christmas", serif;
+  font-weight: 700;
+  margin-right: 2rem;
+}
+
+.footer p {
+  margin: 0; 
+}
+

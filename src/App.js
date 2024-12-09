@@ -5,6 +5,7 @@ import "./style/App.css";
 import Nieve from "./components/Nieve";
 import PapaNoel from "./components/Papa-noel";
 import EstrellaFugaz from "./components/EstrellaFugaz";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [audioEnabled, setAudioEnabled] = useState(false); // Control de audio principal
@@ -67,6 +68,7 @@ const App = () => {
         reanudarPapaNoel={reanudarPapaNoel}
       />
       <PapaNoel audioActivo={audioPapaNoel} />
+      <Footer/>
     </div>
   );
 };
