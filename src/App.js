@@ -1,76 +1,81 @@
-import React, { useState, useRef, useEffect } from "react";
-import Calendario from "./components/Calendario";
-import CuentaRegresiva from "./components/CuentaRegresiva";
+import React, { useState, useRef, useEffect, useCallback, Suspense, lazy } from "react";
 import "./style/App.css";
-import Nieve from "./components/Nieve";
-import PapaNoel from "./components/Papa-noel";
-import EstrellaFugaz from "./components/EstrellaFugaz";
-import Footer from "./components/Footer";
+
+// Lazy load de los componentes
+const Calendario = lazy(() => import("./components/Calendario"));
+const CuentaRegresiva = lazy(() => import("./components/CuentaRegresiva"));
+const Nieve = lazy(() => import("./components/Nieve"));
+const PapaNoel = lazy(() => import("./components/Papa-noel"));
+const EstrellaFugaz = lazy(() => import("./components/EstrellaFugaz"));
+const Footer = lazy(() => import("./components/Footer"));
 
 const App = () => {
-  const [audioEnabled, setAudioEnabled] = useState(false); // Control de audio principal
-  const [audioPapaNoel, setAudioPapaNoel] = useState(true); // Control del sonido de Papá Noel
+  const [audioEnabled, setAudioEnabled] = useState(false);
+  const [audioPapaNoel, setAudioPapaNoel] = useState(true);
   const audioRef = useRef(null);
 
+  // Pre-cargar el audio solo una vez
   useEffect(() => {
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-    };
-  }, []);
+    const audio = new Audio("/assets/abrir-card.wav");
+    audio.loop = true;
+    audio.volume = 0.3;
+    audioRef.current = audio;
 
-  const handleSoundToggle = () => {
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, []); // Se ejecuta solo una vez cuando el componente se monta
+
+  const handleSoundToggle = useCallback(() => {
     if (audioEnabled) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     } else {
-      audioRef.current = new Audio("/assets/abrir-card.wav");
-      audioRef.current.loop = true;
-      audioRef.current.volume = 0.3;
       audioRef.current
         .play()
         .catch((err) => console.error("Error al reproducir el sonido:", err));
     }
     setAudioEnabled(!audioEnabled);
-  };
+  }, [audioEnabled]); // Solo se recrea si cambia audioEnabled
 
-  // Función para pausar el sonido de Papá Noel
-  const pausarPapaNoel = () => {
+  const pausarPapaNoel = useCallback(() => {
     setAudioPapaNoel(false);
-  };
+  }, []);
 
-  // Función para reanudar el sonido de Papá Noel
-  const reanudarPapaNoel = () => {
+  const reanudarPapaNoel = useCallback(() => {
     setAudioPapaNoel(true);
-  };
+  }, []);
 
   return (
     <div className="app">
-      <Nieve />
-      <header className="encabezado">
-        <h1>
-          <span className="campanas">🔔</span>
-          <span className="texto-arcoiris">Calendario de Adviento</span>
-          <span className="campanas">🔔</span>
-        </h1>
-        <CuentaRegresiva />
-        <button className="boton-sonido" onClick={handleSoundToggle}>
-          <span className="icono-sonido">
-            {!audioEnabled ? <span>🔊</span> : <span>🔇</span>}
-          </span>
-        </button>
-        <EstrellaFugaz />
-      </header>
-      <Calendario
-        pausarPapaNoel={pausarPapaNoel}
-        reanudarPapaNoel={reanudarPapaNoel}
-      />
-      <PapaNoel audioActivo={audioPapaNoel} />
-      <Footer/>
+      <Suspense fallback={<div>Cargando...</div>}>
+        <Nieve />
+        <header className="encabezado">
+          <h1>
+            <span className="campanas">🔔</span>
+            <span className="texto-arcoiris">Calendario de Adviento</span>
+            <span className="campanas">🔔</span>
+          </h1>
+          <CuentaRegresiva />
+          <button className="boton-sonido" onClick={handleSoundToggle}>
+            <span className="icono-sonido">
+              {!audioEnabled ? <span>🔊</span> : <span>🔇</span>}
+            </span>
+          </button>
+          <EstrellaFugaz />
+        </header>
+
+        <Calendario
+          pausarPapaNoel={pausarPapaNoel}
+          reanudarPapaNoel={reanudarPapaNoel}
+        />
+        <PapaNoel audioActivo={audioPapaNoel} />
+        <Footer />
+      </Suspense>
     </div>
   );
 };
 
 export default App;
+

@@ -138,6 +138,9 @@ h1 {
   body {
     overflow: visible;
   }
+  .footer{
+    width: 85%;
+  }
 }
 @media (max-width: 480px) {
   .calendario {
@@ -148,6 +151,12 @@ h1 {
   }
   body {
     overflow: initial;
+  }
+  .footer{
+    width: 85%;
+  }
+  .app{
+    margin-bottom: 6rem;
   }
 }
 

@@ -4,14 +4,21 @@ import './style/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Verificar si estamos en producción para eliminar StrictMode y reportWebVitals
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+if (process.env.NODE_ENV === 'production') {
+  // En producción, eliminamos StrictMode y reportWebVitals
+  root.render(<App />);
+} else {
+  // En desarrollo, mantener StrictMode
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+
+  // Mantener reportWebVitals en desarrollo si lo necesitas
+  reportWebVitals();
+}
+

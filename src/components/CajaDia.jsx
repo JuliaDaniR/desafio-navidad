@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import moment from 'moment';
 import { motion } from 'framer-motion';
 import '../style/CajaDia.css';
@@ -9,13 +9,15 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
   const [mostrarModal, setMostrarModal] = useState(false);
   const [mostrandoAnimacion, setMostrandoAnimacion] = useState(false);
   const [mostrarCartel, setMostrarCartel] = useState(false);
-  const hoy = moment().date();
+
+  // Calcular el día de hoy solo una vez
+  const hoy = useMemo(() => moment().date(), []);
 
   // Referencia para el sonido
   const sonidoAnimacionRef = useRef(new Audio("/assets/abrir-caja.wav"));
 
-  // Maneja el clic en la caja
-  const manejarClick = () => {
+  // Maneja el clic en la caja (uso de useCallback para evitar recrear la función)
+  const manejarClick = useCallback(() => {
     if (dia <= hoy) {
       setAbierta(true);
       setMostrandoAnimacion(true);
@@ -26,21 +28,38 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
       // Reproducir el sonido de la animación
       sonidoAnimacionRef.current.play();
 
-      setTimeout(() => {
+      const animationTimeout = setTimeout(() => {
         setMostrandoAnimacion(false);
         setMostrarModal(true);
       }, 7000);
+
+      // Limpiar el timeout cuando el componente se desmonte o se cambien las dependencias
+      return () => clearTimeout(animationTimeout);
     } else {
       setMostrarCartel(true);
-      setTimeout(() => setMostrarCartel(false), 4000);
+      const cartelTimeout = setTimeout(() => setMostrarCartel(false), 4000);
+      return () => clearTimeout(cartelTimeout);
     }
-  };
+  }, [dia, hoy, pausarPapaNoel]);
 
   // Cierra el modal y reanuda el sonido de Papá Noel
-  const cerrarModal = () => {
+  const cerrarModal = useCallback(() => {
     setMostrarModal(false);
     reanudarPapaNoel();
-  };
+  }, [reanudarPapaNoel]);
+
+  // Limpiar el audio al desmontar el componente
+  useEffect(() => {
+    const sonidoAnimacion = sonidoAnimacionRef.current;
+  
+    return () => {
+      // Limpiar el audio de la ref usando la variable
+      if (sonidoAnimacion) {
+        sonidoAnimacion.pause();
+        sonidoAnimacion.currentTime = 0;
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -98,3 +117,4 @@ const CajaDia = ({ dia, nombreRegalo, contenidoRegalo, pausarPapaNoel, reanudarP
 };
 
 export default CajaDia;
+
