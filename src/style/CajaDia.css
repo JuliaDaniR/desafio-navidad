@@ -1,0 +1,72 @@
+.animacion-caja {
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen-caja {
+  width: 350px;
+  height: auto;
+  margin: 1rem auto;
+  animation: spinOut 4s ease-in-out 4s forwards;
+}
+
+.numero{
+font-size: 2rem;
+font-weight: bold;
+color: darkgreen;
+}
+
+@keyframes spinOut {
+  from {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+.card-sorpresa-h2, .card-sorpresa-p, .contenido-regalo-p, .numero{
+  font-family: "Mountains of Christmas", serif;
+  font-weight: 700;
+}
+.card-sorpresa-h2{
+  font-size: 2rem;
+  color: darkgoldenrod;
+ }
+
+ .card-sorpresa-p{
+  font-size: 1.3rem;
+  color: darkred;
+ }
+
+ .contenido-regalo-p{
+  font-size: 1.8rem;
+  color: darkgoldenrod;
+ }
+
+ @media (max-width: 900px) {
+  .animacion-caja {
+    position: fixed;
+    top: 30%;
+    left: 15%;
+  }
+}
+
+ @media (max-width: 480px) {
+  .animacion-caja {
+    position: fixed;
+    top: 30%;
+    left: 15%;
+  }
+  
+  .imagen-caja {
+    width: 250px;
+  }
+ }

@@ -1,0 +1,153 @@
+body {
+  font-family: "Comic Sans MS", cursive;
+  background-color: #d62828;
+  background: linear-gradient(to bottom, #d62828, #f15454, #a22222);
+  color: #39bf20;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.app {
+  text-align: center;
+  padding: 20px;
+  height: 90%;
+}
+
+.encabezado {
+  background: linear-gradient(to bottom, #011d3b, #072d64, #100328);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+h1 {
+  font-size: 3rem;
+  font-weight: bold; 
+  text-align: center; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; 
+}
+
+.texto-arcoiris {
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #00ff00,
+    #ffd700,
+    #ffffff,
+    #ff0000
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: arcoiris 5s linear infinite;
+}
+
+.campanas {
+  font-size: 2.5rem;
+  animation: balanceo 1s ease-in-out infinite;
+}
+
+@keyframes arcoiris {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+@keyframes balanceo {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.caja-dia {
+  background-color: #ffffff;
+  border: 10px solid transparent;
+  border-image: url("/public/assets/fondo-dias.jpg") 30 stretch;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  font-family: "Mountains of Christmas", serif;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.caja-dia:hover {
+  transform: scale(1.05);
+}
+
+.caja-dia.abierta {
+  background-color: #38b000;
+  color: #fff;
+}
+
+.contenido {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cuenta-regresiva {
+  margin-top: 10px;
+  font-size: 2rem;
+  color: #ffe66d;
+}
+
+.boton-sonido {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.icono-sonido {
+  font-size: 2rem;
+}
+@media (max-width: 900px) {
+  body {
+    overflow: visible;
+  }
+}
+@media (max-width: 480px) {
+  .calendario {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+  body {
+    overflow: initial;
+  }
+}

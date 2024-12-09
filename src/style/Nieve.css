@@ -1,0 +1,42 @@
+.contenedor-nieve {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.copo {
+  position: absolute;
+  top: -10%;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  animation: caer 20s linear infinite;
+}
+
+@keyframes caer {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(110vh);
+  }
+}
+
+@keyframes mover {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+
+
+
