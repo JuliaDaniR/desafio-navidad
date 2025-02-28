@@ -108,6 +108,85 @@ Durante la construcción del proyecto, se enfrentaron algunos retos interesantes
 
 ## ❤️ Agradecimientos
 
+
+
+# 📝 Formulario de Registro - Hackatón 2024
+
+### Información Personal
+
+**Nombre y Apellido** *(Campo obligatorio)*  
+[Tu respuesta aquí]
+
+**Edad** *(Campo obligatorio)*  
+[Selecciona una opción]
+
+**Correo Electrónico** *(Campo obligatorio)*  
+[Tu respuesta aquí]
+
+**País de Residencia**  
+[Selecciona una opción]
+
+---
+
+### Especialidad
+
+**¿Cuál es tu área principal de especialización?**  
+- [ ] Frontend  
+- [ ] Backend  
+
+---
+
+### Tecnologías Frontend
+
+**Selecciona las tecnologías de Frontend que conoces y/o has trabajado:**  
+- [ ] React  
+- [ ] Hook  
+- [ ] Redux  
+- [ ] FormQuery / TanStack Query  
+- [ ] Bootstrap  
+- [ ] Tailwind  
+- [ ] MaterialUI  
+- [ ] StyledComponents  
+- [ ] Axios  
+- [ ] Git / GitHub  
+
+---
+
+### Tecnologías Backend
+
+**Selecciona las tecnologías de Backend que conoces y/o has trabajado:**  
+- [ ] Spring Boot 3 (Java 17 & 20)  
+- [ ] Spring JPA  
+- [ ] SQL (MySQL, MariaDB, SQLServer, PostgreSQL)  
+- [ ] Spring Security  
+- [ ] Spring Validation  
+- [ ] SpringDoc  
+- [ ] Lombok  
+- [ ] Maven / Gradle / Kotlin  
+- [ ] Git / GitHub  
+- [ ] Postman, Insomnia  
+
+---
+
+### Información Adicional
+
+**LinkedIn**  
+[Tu respuesta aquí]
+
+**Discord ID**  
+[Tu respuesta aquí]
+
+**Disponibilidad Horaria**  
+[Selecciona una opción]
+
+---
+
+### **Confirmación**
+
+Pulsa en enviar para finalizar tu registro.  
+⚡ ¡Nos vemos en el evento!
+
+
 Este proyecto fue realizado con amor para celebrar la magia de la Navidad. 🎄✨
 
 ---
