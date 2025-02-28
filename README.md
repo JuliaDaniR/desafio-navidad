@@ -108,9 +108,13 @@ Durante la construcción del proyecto, se enfrentaron algunos retos interesantes
 
 ## ❤️ Agradecimientos
 
+# Gran Evento Hackathon **El Comité Alumione, Alura Latam y Oracle te traen la segunda edición del hackathon.**
 
+## Registro Evento Hackaton
+**Duración del evento: Desde el ? hasta el ? de ? de 2025.**
+**Tiempo de Registro: 24 Hrs desde fecha de apertura, o hasta llenar cupos.**
 
-# 📝 Formulario de Registro - Hackatón 2024
+# 📝 Formulario de Registro - Hackathon 2025
 
 ### Información Personal
 
